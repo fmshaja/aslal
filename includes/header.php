@@ -1,29 +1,51 @@
 <?php
 // includes/header.php
+require_once __DIR__ . '/../config/constants.php';
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AZLAL (Pvt) Ltd. | IT Company</title>
-    <meta name="description" content="AZLAL (Pvt) Ltd. - Web, App, Software, POS development, and Digital Support.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <title><?= SITE_NAME ?> | IT Solutions & Digital Consultancy</title>
+    <meta name="description" content="<?= SITE_NAME ?> delivers modern digital solutions including Custom Web, Mobile App Development, Enterprise Software, POS, and Digital Support.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
         <div class="container">
-            <div class="logo">
-                <a href="index.php">AZLAL (Pvt) Ltd.</a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="services.php">Services</a></li>
-                    <li><a href="contact.php">Contact</a></li>
+            <a class="navbar-brand fw-bold text-primary" href="index.php"><?= SITE_NAME ?></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-toggle="target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.php">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.php">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portfolio.php">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.php">Contact Us</a>
+                    </li>
                 </ul>
-            </nav>
+            </div>
         </div>
-    </header>
-    <main class="container">
+    </nav>
+    <main class="min-vh-100">

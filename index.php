@@ -1,33 +1,117 @@
 <?php
 // index.php
 require_once 'includes/header.php';
+
+// Fetch top 3 services
+$stmt = $pdo->query("SELECT * FROM services ORDER BY sort_order ASC LIMIT 3");
+$services = $stmt->fetchAll();
+
+// Fetch top 4 projects
+$projStmt = $pdo->query("SELECT * FROM projects ORDER BY created_at DESC LIMIT 4");
+$projects = $projStmt->fetchAll();
 ?>
 
-<div class="hero">
-    <h1>Welcome to AZLAL (Pvt) Ltd.</h1>
-    <p>Your trusted partner in Web, App, Software, and POS development. We provide comprehensive digital support to scale your business.</p>
-    <a href="services.php" class="btn btn-primary">Explore Our Services</a>
-    <a href="contact.php" class="btn">Get in Touch</a>
-</div>
-
-<section>
-    <h2 style="text-align: center; margin-bottom: 1.5rem;">Why Choose Us?</h2>
-    <div class="services-grid">
-        <div class="service-card">
-            <h3>Innovative Solutions</h3>
-            <p>We use the latest technologies to deliver modern, efficient, and scalable IT solutions tailored to your needs.</p>
-        </div>
-        <div class="service-card">
-            <h3>Expert Team</h3>
-            <p>Our dedicated professionals have years of experience in creating robust web and software applications.</p>
-        </div>
-        <div class="service-card">
-            <h3>Reliable Support</h3>
-            <p>We offer continuous digital support to ensure your business operations run smoothly without interruption.</p>
+<!-- Hero Section -->
+<section class="hero bg-primary text-white text-center py-5 mb-5 shadow" style="background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-info) 100%);">
+    <div class="container py-5">
+        <h1 class="display-4 fw-bold mb-3">Modern Digital Solutions for the Enterprise</h1>
+        <p class="lead mb-4 mx-auto" style="max-width: 700px;">
+            <?= SITE_NAME ?> is your trusted partner for Full-Stack Web, Mobile Apps, Enterprise Software, and POS/ERP Systems. We scale your business with robust tech.
+        </p>
+        <div>
+            <a href="services.php" class="btn btn-light btn-lg px-4 me-2 shadow-sm rounded-pill fw-bold text-primary">Explore Services</a>
+            <a href="contact.php" class="btn btn-outline-light btn-lg px-4 shadow-sm rounded-pill fw-bold">Get a Quote</a>
         </div>
     </div>
 </section>
 
-<?php
-require_once 'includes/footer.php';
-?>
+<!-- Value Proposition -->
+<section class="container mb-5">
+    <div class="row text-center g-4">
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm p-4">
+                <i class="bi bi-speedometer2 text-primary display-4 mb-3"></i>
+                <h4 class="fw-bold">High Performance</h4>
+                <p class="text-muted">Lightning-fast load times and optimized architecture for maximum efficiency.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm p-4">
+                <i class="bi bi-shield-lock text-primary display-4 mb-3"></i>
+                <h4 class="fw-bold">Secure by Design</h4>
+                <p class="text-muted">Industry-standard security practices ensuring your data is always protected.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm p-4">
+                <i class="bi bi-headset text-primary display-4 mb-3"></i>
+                <h4 class="fw-bold">24/7 Support</h4>
+                <p class="text-muted">Dedicated infrastructure maintenance and continuous digital support.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Services -->
+<section class="bg-light py-5 mb-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Our Core Services</h2>
+            <p class="text-muted">Tailored solutions to drive your digital transformation.</p>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <?php foreach ($services as $service): ?>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm service-card transition-all">
+                        <div class="card-body p-4 text-center">
+                            <i class="bi <?= htmlspecialchars($service['icon_class']) ?> text-primary display-4 mb-3 d-block"></i>
+                            <h4 class="fw-bold mb-3"><?= htmlspecialchars($service['title']) ?></h4>
+                            <p class="text-muted"><?= htmlspecialchars($service['short_desc']) ?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="text-center mt-4">
+            <a href="services.php" class="btn btn-outline-primary rounded-pill px-4">View All Services</a>
+        </div>
+    </div>
+</section>
+
+<!-- Recent Projects Preview -->
+<section class="container mb-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Recent Case Studies</h2>
+        <p class="text-muted">A glimpse into our successful digital deployments.</p>
+    </div>
+    <div class="row g-4">
+        <?php if (count($projects) > 0): ?>
+            <?php foreach ($projects as $project): ?>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <?php if ($project['image_url']): ?>
+                            <img src="<?= htmlspecialchars($project['image_url']) ?>" class="card-img-top" alt="<?= htmlspecialchars($project['title']) ?>">
+                        <?php else: ?>
+                            <div class="bg-secondary text-white text-center py-5 card-img-top">
+                                <i class="bi bi-image display-4"></i>
+                            </div>
+                        <?php endif; ?>
+                        <div class="card-body">
+                            <span class="badge bg-primary mb-2"><?= htmlspecialchars($project['category']) ?></span>
+                            <h5 class="fw-bold"><?= htmlspecialchars($project['title']) ?></h5>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="col-12 text-center text-muted">
+                <p>No projects to display yet.</p>
+            </div>
+        <?php endif; ?>
+    </div>
+    <div class="text-center mt-4">
+        <a href="portfolio.php" class="btn btn-primary rounded-pill px-4">View Portfolio</a>
+    </div>
+</section>
+
+<?php require_once 'includes/footer.php'; ?>
