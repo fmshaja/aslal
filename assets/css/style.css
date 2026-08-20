@@ -274,21 +274,11 @@ form .btn-primary:hover {
 }
 
 /* Footer */
-footer {
-    background: var(--text-main);
-    color: var(--text-muted);
-    padding: 3rem 0;
-    margin-top: 4rem;
-    text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-footer p {
-    font-size: 0.875rem;
-}
-
 footer a {
     color: var(--primary);
+}
+footer a:hover {
+    color: white;
 }
 
 /* Responsive */

@@ -7,27 +7,27 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <h5 class="fw-bold mb-3"><?= SITE_NAME ?></h5>
-                    <p class="text-muted">Your trusted partner in modern digital solutions. We deliver high-performance Web, Mobile, and Enterprise software.</p>
+                    <p class="text-white-50">Your trusted partner in modern digital solutions. We deliver high-performance Web, Mobile, and Enterprise software.</p>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h5 class="fw-bold mb-3">Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="about.php" class="text-decoration-none text-muted hover-white">About Us</a></li>
-                        <li><a href="services.php" class="text-decoration-none text-muted hover-white">Services</a></li>
-                        <li><a href="portfolio.php" class="text-decoration-none text-muted hover-white">Portfolio</a></li>
-                        <li><a href="contact.php" class="text-decoration-none text-muted hover-white">Contact Us</a></li>
+                        <li><a href="about.php" class="text-decoration-none text-white-50 hover-white">About Us</a></li>
+                        <li><a href="services.php" class="text-decoration-none text-white-50 hover-white">Services</a></li>
+                        <li><a href="portfolio.php" class="text-decoration-none text-white-50 hover-white">Portfolio</a></li>
+                        <li><a href="contact.php" class="text-decoration-none text-white-50 hover-white">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h5 class="fw-bold mb-3">Contact</h5>
-                    <ul class="list-unstyled text-muted">
+                    <ul class="list-unstyled text-white-50">
                         <li><i class="bi bi-envelope-fill me-2"></i> <?= CONTACT_EMAIL ?></li>
                         <li><i class="bi bi-geo-alt-fill me-2"></i> Colombo, Sri Lanka</li>
                     </ul>
                 </div>
             </div>
             <div class="text-center pt-4 border-top border-secondary mt-4">
-                <p class="mb-0 text-muted">&copy; <?= date("Y") ?> <?= SITE_NAME ?>. All Rights Reserved.</p>
+                <p class="mb-0 text-white-50">&copy; <?= date("Y") ?> <?= SITE_NAME ?>. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
