@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `projects` (
 );
 
 -- Insert a default admin user (Password is 'admin123')
-INSERT INTO `users` (`username`, `password`, `role`) VALUES ('admin', '$2y$10$wN3tVqV1u1bY1O3Q6r/Npe9M9r4b3YmOqR0m6G8d.hYwH.B2nN78y', 'admin') ON DUPLICATE KEY UPDATE `username`=`username`;
+INSERT INTO `users` (`username`, `password`, `role`) VALUES ('admin', '$2y$10$h2IsxUPEsVY7S1SpxT8HJ.nIqFPjIxvgARY4lTFeq2Vk3Nqu6vTb.', 'admin') ON DUPLICATE KEY UPDATE `password`='$2y$10$h2IsxUPEsVY7S1SpxT8HJ.nIqFPjIxvgARY4lTFeq2Vk3Nqu6vTb.';
 
 -- Insert default services
 INSERT INTO `services` (`slug`, `title`, `short_desc`, `icon_class`) VALUES 
