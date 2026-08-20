@@ -85,10 +85,10 @@ $services = $servStmt->fetchAll(PDO::FETCH_COLUMN);
                                 <label for="budget" class="form-label fw-bold">Project Budget</label>
                                 <select class="form-select bg-light" id="budget" name="budget">
                                     <option value="" disabled selected>Select a range</option>
-                                    <option value="<LKR 300,000">Less than LKR 300,000</option>
-                                    <option value="LKR 300,000 - LKR 1,500,000">LKR 300,000 - LKR 1,500,000</option>
-                                    <option value="LKR 1,500,000 - LKR 3,000,000">LKR 1,500,000 - LKR 3,000,000</option>
-                                    <option value=">LKR 3,000,000">More than LKR 3,000,000</option>
+                                    <option value="<LKR 100,000">Less than LKR 100,000</option>
+                                    <option value="LKR 100,000 - LKR 500,000">LKR 100,000 - LKR 500,000</option>
+                                    <option value="LKR 500,000 - LKR 1,500,000">LKR 500,000 - LKR 1,500,000</option>
+                                    <option value=">LKR 1,500,000">More than LKR 1,500,000</option>
                                 </select>
                             </div>
                         </div>
