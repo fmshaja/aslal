@@ -30,6 +30,6 @@ $options = [
 try {
     $pdo = new PDO($dsn, $username, $password, $options);
 } catch (\PDOException $e) {
-    // In a production environment, avoid showing the exact error message to users
-    throw new \PDOException($e->getMessage(), (int) $e->getCode());
+    // Show the error for debugging
+    die("<h1>Database Connection Failed</h1><p>" . $e->getMessage() . "</p><p>Host: $host | DB: $dbname | User: $username</p>");
 }
