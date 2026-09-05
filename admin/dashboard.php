@@ -4,15 +4,19 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 require_once 'includes/admin_header.php';
 
-// Fetch stats
-$inqCountStmt = $pdo->query("SELECT COUNT(*) FROM inquiries");
-$inqCount = $inqCountStmt->fetchColumn();
+try {
+    // Fetch stats
+    $inqCountStmt = $pdo->query("SELECT COUNT(*) FROM inquiries");
+    $inqCount = $inqCountStmt->fetchColumn();
 
-$newInqStmt = $pdo->query("SELECT COUNT(*) FROM inquiries WHERE status = 'new'");
-$newInqCount = $newInqStmt->fetchColumn();
+    $newInqStmt = $pdo->query("SELECT COUNT(*) FROM inquiries WHERE status = 'new'");
+    $newInqCount = $newInqStmt->fetchColumn();
 
-$projCountStmt = $pdo->query("SELECT COUNT(*) FROM projects");
-$projCount = $projCountStmt->fetchColumn();
+    $projCountStmt = $pdo->query("SELECT COUNT(*) FROM projects");
+    $projCount = $projCountStmt->fetchColumn();
+} catch (\PDOException $e) {
+    die("<h1>Database Query Error on Dashboard</h1><p>" . $e->getMessage() . "</p><p>Did you forget to import database.sql into your live database?</p>");
+}
 ?>
 
 <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">

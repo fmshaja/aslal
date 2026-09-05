@@ -4,13 +4,17 @@ require_once 'includes/header.php';
 
 $category = $_GET['category'] ?? 'All';
 
-if ($category !== 'All') {
-    $stmt = $pdo->prepare("SELECT * FROM projects WHERE category = ? ORDER BY created_at DESC");
-    $stmt->execute([$category]);
-} else {
-    $stmt = $pdo->query("SELECT * FROM projects ORDER BY created_at DESC");
+try {
+    if ($category !== 'All') {
+        $stmt = $pdo->prepare("SELECT * FROM projects WHERE category = ? ORDER BY created_at DESC");
+        $stmt->execute([$category]);
+    } else {
+        $stmt = $pdo->query("SELECT * FROM projects ORDER BY created_at DESC");
+    }
+    $projects = $stmt->fetchAll();
+} catch (\PDOException $e) {
+    die("<h1>Database Query Error on Portfolio</h1><p>" . $e->getMessage() . "</p><p>Make sure the 'projects' table exists in your live database.</p>");
 }
-$projects = $stmt->fetchAll();
 
 // Get unique categories for filter
 $catStmt = $pdo->query("SELECT DISTINCT category FROM projects");
