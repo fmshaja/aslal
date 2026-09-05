@@ -88,18 +88,27 @@ $projects = $projStmt->fetchAll();
         <?php if (count($projects) > 0): ?>
             <?php foreach ($projects as $project): ?>
                 <div class="col-md-6 col-lg-3">
-                    <div class="card h-100 border-0 shadow-sm">
+                    <div class="card h-100 border-0 shadow-sm overflow-hidden">
                         <?php if ($project['image_url']): ?>
-                            <img src="<?= htmlspecialchars($project['image_url']) ?>" class="card-img-top" alt="<?= htmlspecialchars($project['title']) ?>">
+                            <img src="<?= htmlspecialchars($project['image_url']) ?>" class="card-img-top" alt="<?= htmlspecialchars($project['title']) ?>" style="height: 200px; object-fit: cover;">
                         <?php else: ?>
-                            <div class="bg-secondary text-white text-center py-5 card-img-top">
-                                <i class="bi bi-image display-4"></i>
+                            <div class="bg-light text-secondary text-center d-flex align-items-center justify-content-center card-img-top" style="height: 200px;">
+                                <i class="bi bi-image display-1"></i>
                             </div>
                         <?php endif; ?>
-                        <div class="card-body">
+                        <div class="card-body p-4">
                             <span class="badge bg-primary mb-2"><?= htmlspecialchars($project['category']) ?></span>
-                            <h5 class="fw-bold"><?= htmlspecialchars($project['title']) ?></h5>
+                            <h5 class="fw-bold mb-2"><?= htmlspecialchars($project['title']) ?></h5>
+                            <?php if ($project['client_name']): ?>
+                                <p class="text-muted small mb-3"><i class="bi bi-person-workspace me-1"></i> Client: <?= htmlspecialchars($project['client_name']) ?></p>
+                            <?php endif; ?>
+                            <p class="text-secondary small" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><?= nl2br(htmlspecialchars($project['description'] ?? '')) ?></p>
                         </div>
+                        <?php if ($project['live_url']): ?>
+                        <div class="card-footer bg-white border-0 p-4 pt-0 text-end">
+                            <a href="<?= htmlspecialchars($project['live_url']) ?>" target="_blank" class="btn btn-sm btn-outline-primary rounded-pill">View Live <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             <?php endforeach; ?>
