@@ -155,7 +155,7 @@ main {
 
 .btn-primary:hover {
     background-color: var(--primary-hover);
-    color: white;
+    color: rgb(23, 0, 154);
     border-color: var(--primary-hover);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
@@ -168,7 +168,7 @@ main {
 }
 
 /* Services */
-section > h2 {
+section>h2 {
     text-align: center;
     font-size: 2.5rem;
     font-weight: 700;
@@ -271,6 +271,7 @@ form .btn-primary:hover {
 footer a {
     color: var(--primary);
 }
+
 footer a:hover {
     color: white;
 }
@@ -281,21 +282,21 @@ footer a:hover {
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .hero {
         padding: 4rem 1.5rem;
     }
-    
+
     .hero h1 {
         font-size: 2.5rem;
     }
-    
+
     .btn {
         width: 100%;
         margin-left: 0 !important;
         margin-top: 1rem;
     }
-    
+
     .services-grid {
         grid-template-columns: 1fr;
     }
