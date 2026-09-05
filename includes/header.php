@@ -25,7 +25,7 @@ require_once __DIR__ . '/functions.php';
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.php">
-                <img src="assets/images/logo.png" alt="<?= SITE_NAME ?> Logo" height="40" class="d-inline-block align-text-top">
+                <img src="<?= htmlspecialchars(LOGO_PATH) ?>" alt="<?= SITE_NAME ?> Logo" height="40" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

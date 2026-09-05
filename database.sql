@@ -52,3 +52,19 @@ INSERT INTO `services` (`slug`, `title`, `short_desc`, `icon_class`) VALUES
 ('pos-erp', 'POS & ERP Systems', 'Scalable systems for retail and enterprise inventory.', 'bi-calculator'),
 ('it-support', '24/7 Digital Support', 'Continuous maintenance and infrastructure support.', 'bi-headset')
 ON DUPLICATE KEY UPDATE `slug`=`slug`;
+
+CREATE TABLE IF NOT EXISTS `settings` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `setting_key` VARCHAR(100) NOT NULL UNIQUE,
+    `setting_value` TEXT NOT NULL
+);
+
+-- Insert default settings
+INSERT INTO `settings` (`setting_key`, `setting_value`) VALUES 
+('site_name', 'AZLAL (Pvt) Ltd.'),
+('contact_email', 'info@azlal.net'),
+('contact_phone', '+94 123 456 789'),
+('contact_address', 'Colombo, Sri Lanka'),
+('footer_text', 'Your trusted partner in modern digital solutions. We deliver high-performance Web, Mobile, and Enterprise software.'),
+('logo_path', 'assets/images/logo.png')
+ON DUPLICATE KEY UPDATE `setting_key`=`setting_key`;

@@ -2,6 +2,4 @@
 // config/constants.php
 
 define('SITE_URL', 'https://azlal.net'); // Change to local URL when developing
-define('SITE_NAME', 'AZLAL (Pvt) Ltd.');
-define('CONTACT_EMAIL', 'info@azlal.net');
-define('ADMIN_EMAIL', 'info@azlal.net');
+// Dynamic constants are now defined in functions.php based on database settings

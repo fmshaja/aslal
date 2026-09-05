@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <h5 class="fw-bold mb-3"><?= SITE_NAME ?></h5>
-                    <p class="text-white-50">Your trusted partner in modern digital solutions. We deliver high-performance Web, Mobile, and Enterprise software.</p>
+                    <p class="text-white-50"><?= FOOTER_TEXT ?></p>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h5 class="fw-bold mb-3">Quick Links</h5>
@@ -22,7 +22,12 @@
                     <h5 class="fw-bold mb-3">Contact</h5>
                     <ul class="list-unstyled text-white-50">
                         <li><i class="bi bi-envelope-fill me-2"></i> <?= CONTACT_EMAIL ?></li>
-                        <li><i class="bi bi-geo-alt-fill me-2"></i> Colombo, Sri Lanka</li>
+                        <?php if (CONTACT_PHONE): ?>
+                        <li><i class="bi bi-telephone-fill me-2"></i> <?= CONTACT_PHONE ?></li>
+                        <?php endif; ?>
+                        <?php if (CONTACT_ADDRESS): ?>
+                        <li><i class="bi bi-geo-alt-fill me-2"></i> <?= CONTACT_ADDRESS ?></li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>

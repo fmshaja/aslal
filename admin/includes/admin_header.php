@@ -50,6 +50,11 @@ if (basename($_SERVER['PHP_SELF']) !== 'login.php') {
                     <i class="bi bi-briefcase me-2"></i> Projects
                 </a>
             </li>
+            <li>
+                <a href="settings.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'settings.php' ? 'active' : '' ?>">
+                    <i class="bi bi-gear me-2"></i> Settings
+                </a>
+            </li>
             <li class="mt-4">
                 <a href="logout.php" class="nav-link text-danger">
                     <i class="bi bi-box-arrow-left me-2"></i> Logout
