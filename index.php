@@ -106,7 +106,7 @@ $projects = $projStmt->fetchAll();
                         </div>
                         <?php if ($project['live_url']): ?>
                         <div class="card-footer bg-white border-0 p-4 pt-0 text-end">
-                            <a href="<?= htmlspecialchars($project['live_url']) ?>" target="_blank" class="btn btn-sm btn-outline-primary rounded-pill">View Live <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                            <a href="<?= htmlspecialchars($project['live_url']) ?>" target="_blank" class="btn btn-sm btn-primary rounded-pill">View Live <i class="bi bi-box-arrow-up-right ms-1"></i></a>
                         </div>
                         <?php endif; ?>
                     </div>
