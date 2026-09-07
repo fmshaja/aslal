@@ -22,32 +22,43 @@ require_once __DIR__ . '/functions.php';
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+    <nav class="navbar navbar-expand-lg sticky-top py-3">
         <div class="container">
             <a class="navbar-brand" href="index.php">
-                <img src="<?= htmlspecialchars(LOGO_PATH) ?>" alt="<?= SITE_NAME ?> Logo" height="40" class="d-inline-block align-text-top">
+                <i class="bi bi-triangle-half logo-icon"></i> AZLAL <span class="fs-6 text-muted fw-normal">PVT LTD</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
+                        <a class="nav-link fw-semibold" href="index.php">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="services.php">All Services</a></li>
+                            <li><a class="dropdown-item" href="#">Web & App Development</a></li>
+                            <li><a class="dropdown-item" href="#">Construction & QS</a></li>
+                            <li><a class="dropdown-item" href="#">Quality Assurance</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.php">About Us</a>
+                        <a class="nav-link fw-semibold" href="portfolio.php">Our Work</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="services.php">Services</a>
+                        <a class="nav-link fw-semibold" href="about.php">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="portfolio.php">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.php">Contact Us</a>
+                        <a class="nav-link fw-semibold" href="contact.php">Contact</a>
                     </li>
                 </ul>
+            </div>
+            <div class="d-none d-lg-block">
+                <a href="contact.php" class="btn btn-primary rounded-pill px-4 fw-bold">Get a Quote <i class="bi bi-arrow-right ms-1"></i></a>
             </div>
         </div>
     </nav>

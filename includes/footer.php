@@ -2,37 +2,39 @@
 // includes/footer.php
 ?>
     </main>
-    <footer class="bg-dark text-light py-5 mt-5">
+    <footer class="mt-5">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5 class="fw-bold mb-3"><?= SITE_NAME ?></h5>
-                    <p class="text-white-50"><?= FOOTER_TEXT ?></p>
+            <div class="row align-items-center mb-4">
+                <div class="col-md-3 text-center text-md-start mb-3 mb-md-0">
+                    <a href="index.php" class="text-white text-decoration-none fs-4 fw-bold">
+                        <i class="bi bi-triangle-half text-primary"></i> AZLAL <span class="fs-6 text-white-50 fw-normal">PVT LTD</span>
+                    </a>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h5 class="fw-bold mb-3">Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="about.php" class="text-decoration-none text-white-50 hover-white">About Us</a></li>
-                        <li><a href="services.php" class="text-decoration-none text-white-50 hover-white">Services</a></li>
-                        <li><a href="portfolio.php" class="text-decoration-none text-white-50 hover-white">Portfolio</a></li>
-                        <li><a href="contact.php" class="text-decoration-none text-white-50 hover-white">Contact Us</a></li>
-                    </ul>
+                <div class="col-md-6 text-center mb-3 mb-md-0">
+                    <a href="index.php">Home</a>
+                    <a href="services.php">Services</a>
+                    <a href="portfolio.php">Our Work</a>
+                    <a href="about.php">About Us</a>
+                    <a href="contact.php">Contact</a>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h5 class="fw-bold mb-3">Contact</h5>
-                    <ul class="list-unstyled text-white-50">
-                        <li><i class="bi bi-envelope-fill me-2"></i> <?= CONTACT_EMAIL ?></li>
-                        <?php if (CONTACT_PHONE): ?>
-                        <li><i class="bi bi-telephone-fill me-2"></i> <?= CONTACT_PHONE ?></li>
-                        <?php endif; ?>
-                        <?php if (CONTACT_ADDRESS): ?>
-                        <li><i class="bi bi-geo-alt-fill me-2"></i> <?= CONTACT_ADDRESS ?></li>
-                        <?php endif; ?>
-                    </ul>
+                <div class="col-md-3 text-center text-md-end">
+                    <a href="#" class="text-white-50"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" class="text-white-50"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white-50"><i class="bi bi-youtube"></i></a>
+                    <a href="#" class="text-white-50"><i class="bi bi-envelope"></i></a>
                 </div>
             </div>
-            <div class="text-center pt-4 border-top border-secondary mt-4">
-                <p class="mb-0 text-white-50">&copy; <?= date("Y") ?> <?= SITE_NAME ?>. All Rights Reserved.</p>
+            <div class="row align-items-center border-top border-secondary pt-4 pb-2">
+                <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                    <p>&copy; <?= date("Y") ?> <?= SITE_NAME ?>. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <small>
+                        <a href="services.php" class="text-decoration-none">Full Stack Development</a> | 
+                        <a href="services.php" class="text-decoration-none">Construction</a> | 
+                        <a href="services.php" class="text-decoration-none">Quality Assurance</a>
+                    </small>
+                </div>
             </div>
         </div>
     </footer>
