@@ -15,9 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $service = sanitize($_POST['service_required'] ?? '');
         $budget = sanitize($_POST['budget'] ?? '');
         $message = sanitize($_POST['message'] ?? '');
+        $not_bot = isset($_POST['not_bot']);
 
-        if (empty($name) || empty($email) || empty($service) || empty($message)) {
-            $error = 'Please fill out all required fields.';
+        if (empty($name) || empty($email) || empty($service) || empty($message) || !$not_bot) {
+            $error = 'Please fill out all required fields and confirm you are not a bot.';
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $error = 'Invalid email address.';
         } else {
@@ -107,6 +108,11 @@ $services = $servStmt->fetchAll(PDO::FETCH_COLUMN);
                         <div class="mb-4">
                             <label for="message" class="form-label fw-bold">Project Details / Message <span class="text-danger">*</span></label>
                             <textarea class="form-control bg-light" id="message" name="message" rows="5" required><?= htmlspecialchars($_POST['message'] ?? '') ?></textarea>
+                        </div>
+                        
+                        <div class="mb-4 form-check">
+                            <input type="checkbox" class="form-check-input" id="not_bot" name="not_bot" required>
+                            <label class="form-check-label fw-bold" for="not_bot">I am not a bot <span class="text-danger">*</span></label>
                         </div>
                         
                         <div class="d-grid">

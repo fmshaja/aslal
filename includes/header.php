@@ -20,6 +20,8 @@ require_once __DIR__ . '/functions.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpg">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg sticky-top py-3">
