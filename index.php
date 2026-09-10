@@ -144,7 +144,7 @@ $projects = $projStmt->fetchAll();
                         <li>CMS & E-commerce Solutions</li>
                         <li>Cloud & Deployment</li>
                     </ul>
-                    <a href="services.php" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
+                    <a href="service-web-app.php" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -162,7 +162,7 @@ $projects = $projStmt->fetchAll();
                         <li>Map Drawing & Site Plans</li>
                         <li>Project Management</li>
                     </ul>
-                    <a href="services.php" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
+                    <a href="service-construction-qs.php" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -180,7 +180,7 @@ $projects = $projStmt->fetchAll();
                         <li>Security Testing</li>
                         <li>Quality Consulting</li>
                     </ul>
-                    <a href="services.php" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
+                    <a href="service-qa.php" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
         </div>
