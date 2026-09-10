@@ -128,12 +128,10 @@ $services = $servStmt->fetchAll(PDO::FETCH_COLUMN);
                             <textarea class="form-control bg-light" id="message" name="message" rows="5" required><?= htmlspecialchars($_POST['message'] ?? '') ?></textarea>
                         </div>
                         
-                        <div class="mb-4">
-                            <div class="g-recaptcha" data-sitekey="<?= RECAPTCHA_SITE_KEY ?>"></div>
-                        </div>
+                        <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
                         
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary btn-lg rounded-pill py-3 fw-bold shadow-sm">Send Message</button>
+                            <button type="submit" id="submitBtn" class="btn btn-primary btn-lg rounded-pill py-3 fw-bold shadow-sm">Send Message</button>
                         </div>
                     </form>
                 <?php endif; ?>
@@ -142,5 +140,20 @@ $services = $servStmt->fetchAll(PDO::FETCH_COLUMN);
     </div>
 </div>
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://www.google.com/recaptcha/enterprise.js?render=<?= RECAPTCHA_SITE_KEY ?>"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector('form[action="contact.php"]');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            grecaptcha.enterprise.ready(async () => {
+                const token = await grecaptcha.enterprise.execute('<?= RECAPTCHA_SITE_KEY ?>', {action: 'submit'});
+                document.getElementById('g-recaptcha-response').value = token;
+                form.submit();
+            });
+        });
+    }
+});
+</script>
 <?php require_once 'includes/footer.php'; ?>
