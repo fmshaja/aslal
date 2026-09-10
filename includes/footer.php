@@ -30,9 +30,9 @@
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <small>
-                        <a href="services.php" class="text-decoration-none">Full Stack Development</a> | 
-                        <a href="services.php" class="text-decoration-none">Construction</a> | 
-                        <a href="services.php" class="text-decoration-none">Quality Assurance</a>
+                        <a href="service-web-app.php" class="text-decoration-none">Full Stack Development</a> | 
+                        <a href="service-construction-qs.php" class="text-decoration-none">Construction</a> | 
+                        <a href="service-qa.php" class="text-decoration-none">Quality Assurance</a>
                     </small>
                 </div>
             </div>
