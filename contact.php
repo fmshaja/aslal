@@ -153,22 +153,23 @@ $services = $servStmt->fetchAll(PDO::FETCH_COLUMN);
     </div>
 </div>
 
-<script src="https://www.google.com/recaptcha/enterprise.js?render=<?= RECAPTCHA_SITE_KEY ?>"></script>
+<script src="https://www.google.com/recaptcha/enterprise.js?render=<?php echo RECAPTCHA_SITE_KEY; ?>" async defer></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+    console.log("reCAPTCHA Site Key defined as:", "<?php echo RECAPTCHA_SITE_KEY; ?>");
     const form = document.querySelector('form[action="contact.php"]');
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
             if (typeof grecaptcha === 'undefined' || typeof grecaptcha.enterprise === 'undefined') {
-                alert("reCAPTCHA script failed to load. Please check your network or adblocker.");
+                alert("reCAPTCHA script failed to load. Please check your network or adblocker.\nSite Key: <?php echo RECAPTCHA_SITE_KEY; ?>");
                 return;
             }
             
             grecaptcha.enterprise.ready(async () => {
                 try {
-                    const token = await grecaptcha.enterprise.execute('<?= RECAPTCHA_SITE_KEY ?>', {action: 'submit'});
+                    const token = await grecaptcha.enterprise.execute('<?php echo RECAPTCHA_SITE_KEY; ?>', {action: 'submit'});
                     document.getElementById('g-recaptcha-response').value = token;
                     form.submit();
                 } catch (error) {
