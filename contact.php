@@ -22,8 +22,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $error = 'Invalid email address.';
         } else {
-            // Verify reCAPTCHA
-            $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . RECAPTCHA_SECRET_KEY . '&response=' . $recaptcha_response);
+            // Verify reCAPTCHA using cURL
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+                'secret' => RECAPTCHA_SECRET_KEY,
+                'response' => $recaptcha_response
+            ]));
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $verifyResponse = curl_exec($ch);
+            curl_close($ch);
+            
             $responseData = json_decode($verifyResponse);
             
             if ($responseData && $responseData->success) {
