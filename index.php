@@ -48,7 +48,7 @@ $projects = $projStmt->fetchAll();
                                 <i class="bi bi-laptop text-info fs-4"></i>
                                 <div class="fw-bold fs-6 lh-1">Web & App<br><small class="text-white-50 fw-normal">Development</small></div>
                             </div>
-                            <img src="assets/images/web_app_hero.jpg" alt="Web and App Development" class="hero-img img-fluid" style="object-fit:cover; border-radius: 1rem;">
+                            <img src="assets/images/web_app_hero.jpg" alt="Web and App Development" class="hero-img img-fluid" style="object-fit:cover; border-radius: 1rem; aspect-ratio: 4/3; width: 100%;">
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@ $projects = $projStmt->fetchAll();
                                 <i class="bi bi-building text-warning fs-4"></i>
                                 <div class="fw-bold fs-6 lh-1">Construction<br><small class="text-white-50 fw-normal">& QS</small></div>
                             </div>
-                            <img src="assets/images/hero_bg.jpg" alt="Construction Management" class="hero-img img-fluid" style="object-fit:cover; border-radius: 1rem;">
+                            <img src="assets/images/hero_bg.jpg" alt="Construction Management" class="hero-img img-fluid" style="object-fit:cover; border-radius: 1rem; aspect-ratio: 4/3; width: 100%;">
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@ $projects = $projStmt->fetchAll();
                                 <i class="bi bi-shield-check text-success fs-4"></i>
                                 <div class="fw-bold fs-6 lh-1">Quality<br><small class="text-white-50 fw-normal">Assurance</small></div>
                             </div>
-                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Quality Assurance" class="hero-img img-fluid" style="object-fit:cover; border-radius: 1rem;">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Quality Assurance" class="hero-img img-fluid" style="object-fit:cover; border-radius: 1rem; aspect-ratio: 4/3; width: 100%;">
                         </div>
                     </div>
                 </div>
