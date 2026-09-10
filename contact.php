@@ -22,33 +22,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $error = 'Invalid email address.';
         } else {
-            // Verify reCAPTCHA Enterprise using REST API
-            $projectId = 'esoteric-might-389610';
-            $verifyUrl = "https://recaptchaenterprise.googleapis.com/v1/projects/{$projectId}/assessments?key=" . RECAPTCHA_SECRET_KEY;
-            
-            $postData = json_encode([
-                'event' => [
-                    'token' => $recaptcha_response,
-                    'expectedAction' => 'submit',
-                    'siteKey' => RECAPTCHA_SITE_KEY
-                ]
-            ]);
-
+            // Verify reCAPTCHA v2 using cURL
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $verifyUrl);
+            curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
             curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                'Content-Type: application/json'
-            ]);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+                'secret' => RECAPTCHA_SECRET_KEY,
+                'response' => $recaptcha_response
+            ]));
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $verifyResponse = curl_exec($ch);
             curl_close($ch);
             
             $responseData = json_decode($verifyResponse);
             
-            // Check if the Enterprise token is valid
-            if ($responseData && isset($responseData->tokenProperties) && $responseData->tokenProperties->valid === true) {
+            if ($responseData && $responseData->success) {
                 try {
                     $stmt = $pdo->prepare("INSERT INTO inquiries (name, email, phone, service_required, budget, message) VALUES (?, ?, ?, ?, ?, ?)");
                     $stmt->execute([$name, $email, $phone, $service, $budget, $message]);
@@ -141,10 +129,12 @@ $services = $servStmt->fetchAll(PDO::FETCH_COLUMN);
                             <textarea class="form-control bg-light" id="message" name="message" rows="5" required><?= htmlspecialchars($_POST['message'] ?? '') ?></textarea>
                         </div>
                         
-                        <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                        <div class="mb-4">
+                            <div class="g-recaptcha" data-sitekey="<?php echo RECAPTCHA_SITE_KEY; ?>"></div>
+                        </div>
                         
                         <div class="d-grid">
-                            <button type="submit" id="submitBtn" class="btn btn-primary btn-lg rounded-pill py-3 fw-bold shadow-sm">Send Message</button>
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill py-3 fw-bold shadow-sm">Send Message</button>
                         </div>
                     </form>
                 <?php endif; ?>
@@ -153,36 +143,5 @@ $services = $servStmt->fetchAll(PDO::FETCH_COLUMN);
     </div>
 </div>
 
-<script src="https://www.google.com/recaptcha/enterprise.js?render=<?php echo RECAPTCHA_SITE_KEY; ?>"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("reCAPTCHA Site Key defined as:", "<?php echo RECAPTCHA_SITE_KEY; ?>");
-    const form = document.querySelector('form[action="contact.php"]');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            let missing = [];
-            if (typeof window.grecaptcha === 'undefined') missing.push('grecaptcha');
-            else if (typeof window.grecaptcha.enterprise === 'undefined') missing.push('grecaptcha.enterprise');
-            
-            if (missing.length > 0) {
-                alert("The script did not execute properly. Missing object: " + missing.join(', ') + ".\nThis strongly suggests an adblocker, a browser privacy feature (like Brave Shields), or a conflicting script is neutralizing it.");
-                return;
-            }
-            
-            window.grecaptcha.enterprise.ready(async () => {
-                try {
-                    const token = await window.grecaptcha.enterprise.execute('<?php echo RECAPTCHA_SITE_KEY; ?>', {action: 'submit'});
-                    document.getElementById('g-recaptcha-response').value = token;
-                    form.submit();
-                } catch (error) {
-                    console.error("reCAPTCHA error:", error);
-                    alert("Error generating reCAPTCHA token: " + error.message + "\nPlease check if your Site Key is valid for this domain.");
-                }
-            });
-        });
-    }
-});
-</script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <?php require_once 'includes/footer.php'; ?>
