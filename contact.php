@@ -15,19 +15,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $service = sanitize($_POST['service_required'] ?? '');
         $budget = sanitize($_POST['budget'] ?? '');
         $message = sanitize($_POST['message'] ?? '');
-        $not_bot = isset($_POST['not_bot']);
+        $recaptcha_response = $_POST['g-recaptcha-response'] ?? '';
 
-        if (empty($name) || empty($email) || empty($service) || empty($message) || !$not_bot) {
-            $error = 'Please fill out all required fields and confirm you are not a bot.';
+        if (empty($name) || empty($email) || empty($service) || empty($message) || empty($recaptcha_response)) {
+            $error = 'Please fill out all required fields and complete the reCAPTCHA.';
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $error = 'Invalid email address.';
         } else {
-            try {
-                $stmt = $pdo->prepare("INSERT INTO inquiries (name, email, phone, service_required, budget, message) VALUES (?, ?, ?, ?, ?, ?)");
-                $stmt->execute([$name, $email, $phone, $service, $budget, $message]);
-                $success = true;
-            } catch (PDOException $e) {
-                $error = 'An error occurred while submitting your inquiry. Please try again later.';
+            // Verify reCAPTCHA
+            $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . RECAPTCHA_SECRET_KEY . '&response=' . $recaptcha_response);
+            $responseData = json_decode($verifyResponse);
+            
+            if ($responseData && $responseData->success) {
+                try {
+                    $stmt = $pdo->prepare("INSERT INTO inquiries (name, email, phone, service_required, budget, message) VALUES (?, ?, ?, ?, ?, ?)");
+                    $stmt->execute([$name, $email, $phone, $service, $budget, $message]);
+                    $success = true;
+                } catch (PDOException $e) {
+                    $error = 'An error occurred while submitting your inquiry. Please try again later.';
+                }
+            } else {
+                $error = 'reCAPTCHA verification failed. Please try again.';
             }
         }
     }
@@ -110,9 +118,8 @@ $services = $servStmt->fetchAll(PDO::FETCH_COLUMN);
                             <textarea class="form-control bg-light" id="message" name="message" rows="5" required><?= htmlspecialchars($_POST['message'] ?? '') ?></textarea>
                         </div>
                         
-                        <div class="mb-4 form-check">
-                            <input type="checkbox" class="form-check-input" id="not_bot" name="not_bot" required>
-                            <label class="form-check-label fw-bold" for="not_bot">I am not a bot <span class="text-danger">*</span></label>
+                        <div class="mb-4">
+                            <div class="g-recaptcha" data-sitekey="<?= RECAPTCHA_SITE_KEY ?>"></div>
                         </div>
                         
                         <div class="d-grid">
@@ -125,4 +132,5 @@ $services = $servStmt->fetchAll(PDO::FETCH_COLUMN);
     </div>
 </div>
 
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <?php require_once 'includes/footer.php'; ?>
