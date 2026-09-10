@@ -160,10 +160,21 @@ document.addEventListener("DOMContentLoaded", function() {
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            if (typeof grecaptcha === 'undefined' || typeof grecaptcha.enterprise === 'undefined') {
+                alert("reCAPTCHA script failed to load. Please check your network or adblocker.");
+                return;
+            }
+            
             grecaptcha.enterprise.ready(async () => {
-                const token = await grecaptcha.enterprise.execute('<?= RECAPTCHA_SITE_KEY ?>', {action: 'submit'});
-                document.getElementById('g-recaptcha-response').value = token;
-                form.submit();
+                try {
+                    const token = await grecaptcha.enterprise.execute('<?= RECAPTCHA_SITE_KEY ?>', {action: 'submit'});
+                    document.getElementById('g-recaptcha-response').value = token;
+                    form.submit();
+                } catch (error) {
+                    console.error("reCAPTCHA error:", error);
+                    alert("Error generating reCAPTCHA token: " + error.message + "\nPlease check if your Site Key is valid for this domain.");
+                }
             });
         });
     }
