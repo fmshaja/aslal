@@ -8,7 +8,7 @@
 <div class="container mb-5">
     <div class="row align-items-center mb-5">
         <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
-            <img src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?auto=format&fit=crop&w=800&q=80" alt="Construction Management" class="img-fluid rounded-4 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="Construction Management" class="img-fluid rounded-4 shadow-lg">
         </div>
         <div class="col-lg-6 order-lg-1">
             <h2 class="fw-bold mb-4">Expertise You Can Build On</h2>
