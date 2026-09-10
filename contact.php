@@ -57,7 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $error = 'An error occurred while submitting your inquiry. Please try again later.';
                 }
             } else {
-                $error = 'reCAPTCHA verification failed. Please try again.';
+                $debug_msg = $responseData ? json_encode($responseData) : 'No response';
+                $error = 'reCAPTCHA verification failed. Debug: ' . htmlspecialchars($debug_msg);
             }
         }
     }
