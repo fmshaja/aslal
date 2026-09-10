@@ -11,42 +11,88 @@ $projStmt = $pdo->query("SELECT * FROM projects ORDER BY created_at DESC LIMIT 4
 $projects = $projStmt->fetchAll();
 ?>
 
-<!-- Hero Section -->
-<section class="hero-section">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 hero-text-content mb-5 mb-lg-0">
-                <div class="hero-tags">
-                    <span>IDEAS + TECHNOLOGY + CONSTRUCTION + QUALITY</span>
-                </div>
-                <h1 class="hero-title">
-                    Your Vision,<br>
-                    Our <span class="highlight">Full Stack Solution</span>
-                </h1>
-                <p class="hero-desc">
-                    We are a full-stack development company offering end-to-end digital solutions, construction services and quality assurance to help you build smarter, faster and better.
-                </p>
-                <div class="d-flex flex-wrap gap-3">
-                    <a href="services.php" class="btn-custom btn-primary-custom">Explore Our Services <i class="bi bi-arrow-right"></i></a>
-                    <a href="contact.php" class="btn-custom btn-outline-custom">Get in Touch</a>
+<!-- Hero Carousel Section -->
+<section class="hero-carousel-section p-0">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <!-- Slides -->
+        <div class="carousel-inner">
+            <!-- Slide 1: Web & App Dev -->
+            <div class="carousel-item active">
+                <div class="carousel-image-overlay" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; height: 80vh; position: relative;">
+                    <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(15, 23, 42, 0.75);"></div>
+                    <div class="carousel-caption d-flex flex-column justify-content-center h-100 pb-5" style="bottom: 0;">
+                        <div class="container text-center text-lg-start">
+                            <span class="badge bg-primary fs-6 mb-3 px-3 py-2 rounded-pill">DIGITAL INNOVATION</span>
+                            <h1 class="display-3 fw-bold text-white mb-4">Web & App<br>Development</h1>
+                            <p class="lead text-white-50 mb-5 mx-auto mx-lg-0" style="max-width: 600px;">
+                                Custom, high-performance software solutions tailored to scale your business operations and engage your customers.
+                            </p>
+                            <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                                <a href="service-web-app.php" class="btn btn-primary btn-lg rounded-pill px-4 fw-semibold shadow-sm">Learn More <i class="bi bi-arrow-right ms-1"></i></a>
+                                <a href="contact.php" class="btn btn-outline-light btn-lg rounded-pill px-4 fw-semibold shadow-sm">Get a Quote</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-6 hero-image-wrapper">
-                <div class="floating-badge badge-1">
-                    <i class="bi bi-laptop text-info fs-4"></i>
-                    <div class="fw-bold fs-6 lh-1">Web & App<br><small class="text-white-50 fw-normal">Development</small></div>
+
+            <!-- Slide 2: Construction & QS -->
+            <div class="carousel-item">
+                <div class="carousel-image-overlay" style="background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; height: 80vh; position: relative;">
+                    <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(15, 23, 42, 0.75);"></div>
+                    <div class="carousel-caption d-flex flex-column justify-content-center h-100 pb-5" style="bottom: 0;">
+                        <div class="container text-center text-lg-start">
+                            <span class="badge bg-warning text-dark fs-6 mb-3 px-3 py-2 rounded-pill">STRUCTURAL EXCELLENCE</span>
+                            <h1 class="display-3 fw-bold text-white mb-4">Construction<br>& Quantity Surveying</h1>
+                            <p class="lead text-white-50 mb-5 mx-auto mx-lg-0" style="max-width: 600px;">
+                                Precision cost planning, professional management, and end-to-end building services for structural projects.
+                            </p>
+                            <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                                <a href="service-construction-qs.php" class="btn btn-warning text-dark btn-lg rounded-pill px-4 fw-semibold shadow-sm">Explore Services <i class="bi bi-arrow-right ms-1"></i></a>
+                                <a href="contact.php" class="btn btn-outline-light btn-lg rounded-pill px-4 fw-semibold shadow-sm">Contact Experts</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="floating-badge badge-2">
-                    <i class="bi bi-building text-warning fs-4"></i>
-                    <div class="fw-bold fs-6 lh-1">Construction<br><small class="text-white-50 fw-normal">& QS</small></div>
+            </div>
+
+            <!-- Slide 3: QA -->
+            <div class="carousel-item">
+                <div class="carousel-image-overlay" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; height: 80vh; position: relative;">
+                    <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(15, 23, 42, 0.75);"></div>
+                    <div class="carousel-caption d-flex flex-column justify-content-center h-100 pb-5" style="bottom: 0;">
+                        <div class="container text-center text-lg-start">
+                            <span class="badge bg-success fs-6 mb-3 px-3 py-2 rounded-pill">SOFTWARE RELIABILITY</span>
+                            <h1 class="display-3 fw-bold text-white mb-4">Quality Assurance<br>& Testing</h1>
+                            <p class="lead text-white-50 mb-5 mx-auto mx-lg-0" style="max-width: 600px;">
+                                Ensure flawless execution with rigorous automated testing, security audits, and performance validation.
+                            </p>
+                            <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                                <a href="service-qa.php" class="btn btn-success text-white btn-lg rounded-pill px-4 fw-semibold shadow-sm">Discover QA <i class="bi bi-arrow-right ms-1"></i></a>
+                                <a href="contact.php" class="btn btn-outline-light btn-lg rounded-pill px-4 fw-semibold shadow-sm">Request Audit</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="floating-badge badge-3">
-                    <i class="bi bi-shield-check text-success fs-4"></i>
-                    <div class="fw-bold fs-6 lh-1">Quality<br><small class="text-white-50 fw-normal">Assurance</small></div>
-                </div>
-                <img src="assets/images/hero_bg.jpg" alt="Hero Workspace" class="hero-img img-fluid">
             </div>
         </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 </section>
 
