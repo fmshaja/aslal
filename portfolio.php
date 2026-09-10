@@ -21,10 +21,10 @@ $catStmt = $pdo->query("SELECT DISTINCT category FROM projects");
 $categories = $catStmt->fetchAll(PDO::FETCH_COLUMN);
 ?>
 
-<div class="bg-dark text-white text-center py-5 mb-5">
-    <div class="container py-4">
+<div class="bg-primary text-white text-center py-5 mb-5" style="background: linear-gradient(135deg, #111827 0%, #4b5563 100%);">
+    <div class="container py-5">
         <h1 class="display-4 fw-bold">Our Portfolio</h1>
-        <p class="lead mb-0 text-secondary">A selection of our latest and greatest work.</p>
+        <p class="lead mb-0">A selection of our latest and greatest work across all domains.</p>
     </div>
 </div>
 
@@ -40,7 +40,7 @@ $categories = $catStmt->fetchAll(PDO::FETCH_COLUMN);
         <?php if (count($projects) > 0): ?>
             <?php foreach ($projects as $project): ?>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 border-0 shadow-sm overflow-hidden">
+                    <div class="card h-100 border-0 shadow-lg rounded-4 overflow-hidden">
                         <?php if ($project['image_url']): ?>
                             <img src="<?= htmlspecialchars($project['image_url']) ?>" class="card-img-top" alt="<?= htmlspecialchars($project['title']) ?>" style="height: 200px; object-fit: cover;">
                         <?php else: ?>

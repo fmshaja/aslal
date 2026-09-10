@@ -6,8 +6,8 @@ $stmt = $pdo->query("SELECT * FROM services ORDER BY sort_order ASC");
 $services = $stmt->fetchAll();
 ?>
 
-<div class="bg-primary text-white text-center py-5 mb-5" style="background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-info) 100%);">
-    <div class="container py-4">
+<div class="bg-primary text-white text-center py-5 mb-5" style="background: linear-gradient(135deg, #0f172a 0%, #334155 100%);">
+    <div class="container py-5">
         <h1 class="display-4 fw-bold">Our Services</h1>
         <p class="lead mb-0">End-to-end digital solutions designed to scale your business.</p>
     </div>

@@ -58,14 +58,16 @@ $servStmt = $pdo->query("SELECT title FROM services ORDER BY sort_order ASC");
 $services = $servStmt->fetchAll(PDO::FETCH_COLUMN);
 ?>
 
-<div class="container py-5">
+<div class="bg-primary text-white text-center py-5 mb-5" style="background: linear-gradient(135deg, #111827 0%, #3b82f6 100%);">
+    <div class="container py-5">
+        <h1 class="display-4 fw-bold">Get in Touch</h1>
+        <p class="lead mb-0">We'd love to hear from you. Fill out the form below to request a quote or ask a question.</p>
+    </div>
+</div>
+
+<div class="container mb-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <div class="text-center mb-5">
-                <h1 class="display-5 fw-bold text-primary">Get in Touch</h1>
-                <p class="lead text-muted">We'd love to hear from you. Fill out the form below to request a quote or ask a question.</p>
-            </div>
-            
             <div class="card border-0 shadow-lg p-4 p-md-5 rounded-4">
                 <?php if ($success): ?>
                     <div class="alert alert-success d-flex align-items-center" role="alert">

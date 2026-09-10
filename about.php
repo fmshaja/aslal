@@ -3,19 +3,22 @@
 require_once 'includes/header.php';
 ?>
 
-<div class="container py-5">
+<div class="bg-primary text-white text-center py-5 mb-5" style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);">
+    <div class="container py-5">
+        <h1 class="display-4 fw-bold">About <?= SITE_NAME ?></h1>
+        <p class="lead mb-0">We are a premier IT solutions provider dedicated to transforming businesses through modern digital technology.</p>
+    </div>
+</div>
+
+<div class="container py-5 mb-5">
     <div class="row align-items-center mb-5">
-        <div class="col-md-6 mb-4 mb-md-0">
-            <h1 class="display-4 fw-bold text-primary mb-3">About <?= SITE_NAME ?></h1>
-            <p class="lead text-muted mb-4">We are a premier IT solutions provider dedicated to transforming businesses through modern digital technology.</p>
-            <p>At <?= SITE_NAME ?>, our mission is to deliver high-quality, scalable, and secure software applications. From tailored POS systems for retail outlets to comprehensive enterprise mobile applications, we handle the full software development lifecycle.</p>
-            <p>Our engineering values focus on clean code, performance optimization, and creating intuitive user experiences.</p>
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <h2 class="fw-bold mb-4">Building Digital Futures</h2>
+            <p class="lead text-muted mb-4">At <?= SITE_NAME ?>, our mission is to deliver high-quality, scalable, and secure software applications. From tailored POS systems for retail outlets to comprehensive enterprise mobile applications, we handle the full software development lifecycle.</p>
+            <p class="text-muted">Our engineering values focus on clean code, performance optimization, and creating intuitive user experiences.</p>
         </div>
-        <div class="col-md-6">
-            <div class="bg-light p-5 rounded-4 shadow-sm text-center">
-                <i class="bi bi-buildings-fill text-primary display-1 mb-3 d-block"></i>
-                <h3 class="fw-bold">Building Digital Futures</h3>
-            </div>
+        <div class="col-lg-6">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="About Us" class="img-fluid rounded-4 shadow-lg">
         </div>
     </div>
     
