@@ -43,9 +43,9 @@ require_once __DIR__ . '/functions.php';
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="services.php">All Services</a></li>
-                            <li><a class="dropdown-item" href="#">Web & App Development</a></li>
-                            <li><a class="dropdown-item" href="#">Construction & QS</a></li>
-                            <li><a class="dropdown-item" href="#">Quality Assurance</a></li>
+                            <li><a class="dropdown-item" href="service-web-app.php">Web & App Development</a></li>
+                            <li><a class="dropdown-item" href="service-construction-qs.php">Construction & QS</a></li>
+                            <li><a class="dropdown-item" href="service-qa.php">Quality Assurance</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -53,9 +53,9 @@ require_once __DIR__ . '/functions.php';
                             Products
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Point of Sale</a></li>
-                            <li><a class="dropdown-item" href="#">Android Application</a></li>
-                            <li><a class="dropdown-item" href="#">ERP</a></li>
+                            <li><a class="dropdown-item" href="product-pos.php">Point of Sale</a></li>
+                            <li><a class="dropdown-item" href="product-android.php">Android Application</a></li>
+                            <li><a class="dropdown-item" href="product-erp.php">ERP</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
