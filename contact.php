@@ -153,7 +153,7 @@ $services = $servStmt->fetchAll(PDO::FETCH_COLUMN);
     </div>
 </div>
 
-<script src="https://www.google.com/recaptcha/enterprise.js?render=<?php echo RECAPTCHA_SITE_KEY; ?>" async defer></script>
+<script src="https://www.google.com/recaptcha/enterprise.js?render=<?php echo RECAPTCHA_SITE_KEY; ?>"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     console.log("reCAPTCHA Site Key defined as:", "<?php echo RECAPTCHA_SITE_KEY; ?>");
@@ -162,14 +162,18 @@ document.addEventListener("DOMContentLoaded", function() {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            if (typeof grecaptcha === 'undefined' || typeof grecaptcha.enterprise === 'undefined') {
-                alert("reCAPTCHA script failed to load. Please check your network or adblocker.\nSite Key: <?php echo RECAPTCHA_SITE_KEY; ?>");
+            let missing = [];
+            if (typeof window.grecaptcha === 'undefined') missing.push('grecaptcha');
+            else if (typeof window.grecaptcha.enterprise === 'undefined') missing.push('grecaptcha.enterprise');
+            
+            if (missing.length > 0) {
+                alert("The script did not execute properly. Missing object: " + missing.join(', ') + ".\nThis strongly suggests an adblocker, a browser privacy feature (like Brave Shields), or a conflicting script is neutralizing it.");
                 return;
             }
             
-            grecaptcha.enterprise.ready(async () => {
+            window.grecaptcha.enterprise.ready(async () => {
                 try {
-                    const token = await grecaptcha.enterprise.execute('<?php echo RECAPTCHA_SITE_KEY; ?>', {action: 'submit'});
+                    const token = await window.grecaptcha.enterprise.execute('<?php echo RECAPTCHA_SITE_KEY; ?>', {action: 'submit'});
                     document.getElementById('g-recaptcha-response').value = token;
                     form.submit();
                 } catch (error) {
