@@ -22,21 +22,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $error = 'Invalid email address.';
         } else {
-            // Verify reCAPTCHA using cURL
+            // Verify reCAPTCHA Enterprise using REST API
+            $projectId = 'esoteric-might-389610';
+            $verifyUrl = "https://recaptchaenterprise.googleapis.com/v1/projects/{$projectId}/assessments?key=" . RECAPTCHA_SECRET_KEY;
+            
+            $postData = json_encode([
+                'event' => [
+                    'token' => $recaptcha_response,
+                    'expectedAction' => 'submit',
+                    'siteKey' => RECAPTCHA_SITE_KEY
+                ]
+            ]);
+
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+            curl_setopt($ch, CURLOPT_URL, $verifyUrl);
             curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
-                'secret' => RECAPTCHA_SECRET_KEY,
-                'response' => $recaptcha_response
-            ]));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Content-Type: application/json'
+            ]);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $verifyResponse = curl_exec($ch);
             curl_close($ch);
             
             $responseData = json_decode($verifyResponse);
             
-            if ($responseData && $responseData->success) {
+            // Check if the Enterprise token is valid
+            if ($responseData && isset($responseData->tokenProperties) && $responseData->tokenProperties->valid === true) {
                 try {
                     $stmt = $pdo->prepare("INSERT INTO inquiries (name, email, phone, service_required, budget, message) VALUES (?, ?, ?, ?, ?, ?)");
                     $stmt->execute([$name, $email, $phone, $service, $budget, $message]);
