@@ -48,6 +48,16 @@ require_once __DIR__ . '/functions.php';
                             <li><a class="dropdown-item" href="#">Quality Assurance</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Products
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Point of Sale</a></li>
+                            <li><a class="dropdown-item" href="#">Android Application</a></li>
+                            <li><a class="dropdown-item" href="#">ERP</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link fw-semibold" href="portfolio.php">Our Work</a>
                     </li>
